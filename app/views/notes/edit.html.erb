@@ -1,8 +1,2 @@
 <h1>編集</h1>
-<%= form_tag update_note_path(@note.id), method:'put' do%>
-	<p>タイトル</p>
-	<%= text_field_tag :title, @note.title, class:"form-control title-field" %>
-	<p>内容</p>
-	<%= text_area_tag :content, @note.content, class: "form-control content-field", "data-confirm"=>"本当に削除しますか?" %>
-	<%= submit_tag '保存', class: "btn primary-btn" %>
-<% end %>
+<%= render 'form' %>
