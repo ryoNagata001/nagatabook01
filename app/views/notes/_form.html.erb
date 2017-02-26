@@ -9,6 +9,8 @@
 <% end %>
 	</div>
 <%= form_for(@note) do |f|%>
+	<p>ユーザ</p>
+	<%= f.collection_select :user_id, User.all, :id, :name ,{prompt: true},{class: "form-control user-id-field"}%>
 	<p>タイトル</p>
 	<%= f.text_field :title, class:"form-control title-field" %>
 	<p>内容</p>

@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+	  @notes = @user.notes 
   end
 
   # GET /users/new
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
+	@user.set_image(params[:user][:image])
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
@@ -40,6 +41,8 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+	  file = params[:user][:image]
+	  @user.set_image(file)
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
@@ -71,4 +74,6 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email)
     end
+
+
 end
